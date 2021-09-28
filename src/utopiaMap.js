@@ -6,12 +6,15 @@ import {
 } from "./myLeaflet.js"
 
 
+let PlaceMarker = Marker.extend({
 
+});
 
 export {
   Control,
   Map,
-  TileLayer
+  TileLayer,
+  PlaceMarker
 }
 
 

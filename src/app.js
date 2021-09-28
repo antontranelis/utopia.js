@@ -1,10 +1,12 @@
 import {
   Map,
-  TileLayer
+  TileLayer,
+  PlaceMarker
 } from "./utopiaMap.js"
 // import "thePlugin"
 // import "theOtherPlugin"
 
+// eslint-disable-next-line no-unused-vars
 const L = window.L
 //const thePlugin = L.thePlugin()
 //const theOtherPlugin = new L.Control.theOtherPlugin(options)
@@ -16,4 +18,10 @@ new TileLayer('https://tile.osmand.net/hd/{z}/{x}/{y}.png', {
   maxZoom: 18,
 
 }).addTo(mymap);
+
+
+
+new PlaceMarker([51.5, -0.09]).addTo(mymap);
+
+
 console.log("app.js working");
