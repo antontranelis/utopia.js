@@ -3,7 +3,7 @@ import {
   Map,
   TileLayer,
   geoJSON
-} from "./myLeaflet.js"
+} from "../Libraries/myLeaflet.js"
 
 import {places, events, profiles} from "../../sampleData/data.js"
 import {PlacePopup, EventPopup, ProfilePopup} from "./popups.js"

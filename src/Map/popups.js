@@ -1,7 +1,7 @@
 import {
   Popup,
   setOptions
-} from "./myLeaflet.js"
+} from "../Libraries/myLeaflet.js"
 
 let options = {
   maxHeight: 377,

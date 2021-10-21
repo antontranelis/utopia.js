@@ -1,7 +1,7 @@
 import {
   Marker,
   setOptions
-} from "./myLeaflet.js"
+} from "../Libraries/myLeaflet.js"
 
 import * as ExtraMarkers from "../Libraries/leaflet-extra-markers/js/leaflet.extra-markers.js"
 

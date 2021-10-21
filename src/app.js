@@ -18,7 +18,3 @@ const map = new UtopiaMap('leafletmap').setView(config.position, config.zoom);
 
 
 map.populateMap();
-
-
-
-console.log("app.js working");
