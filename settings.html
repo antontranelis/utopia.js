@@ -1,0 +1,998 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+  <link href="settings-Dateien/django-fontawesome.css" rel="stylesheet" media="all">
+<link href="settings-Dateien/all.css" rel="stylesheet" media="all">
+<script type="text/javascript" src="settings-Dateien/django-fontawesome.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="./static/vendors/materialize/css/materialize.css">
+	<link rel="stylesheet" href="./static/css/utopia.css">
+  <script src="./static/vendors/materialize/js/materialize.js"></script>
+
+  <link rel="icon" type="image/png" href="https://new.docutopia.de/static/map/img/rocket2.ico">
+  <title>docutopia</title>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+<nav>
+  <div style="z-index: 2000 !important; box-shadow: 0 1px 5px rgb(0 0 0 / 40%)" id="navbar" class="nav-wrapper brown">
+    <a style="margin-left:10px" href="/" class="brand-logo left"><b>docutopia</b></a>
+    <ul id="nav-mobile" class="right hide-on-down">
+
+
+
+
+          <li><a class="dropdown-trigger" data-target="dropdown1">anton<i style="width: 24px;" class="material-icons right">arrow_drop_down</i></a><ul id="dropdown1" class="dropdown-content" tabindex="0">
+            <li tabindex="0"><a href="settings.html">Settings</a></li>
+            <li tabindex="0"><a href="/">Logout</a></li>
+</ul></li>
+
+    </ul>
+
+
+        <img id="nav-avatar" style="border-radius: 50%;" class="right" src="settings-Dateien/bees_2CNIRgb.jpeg" height="44">&nbsp;&nbsp;&nbsp;
+
+
+  </div>
+</nav>
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var el = document.querySelectorAll(".dropdown-trigger");
+    M.Dropdown.init(el,{coverTrigger:false, hover: true});
+  });
+</script>
+
+
+
+
+
+
+
+<script src="settings-Dateien/cropper.js" type="text/javascript"></script>
+<link href="settings-Dateien/cropper.css" rel="stylesheet">
+<script src="settings-Dateien/jscolor.js" type="text/javascript"></script>
+<link href="settings-Dateien/profile.css" rel="stylesheet">
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m12 l12">
+        <div style="display: flex; align-items: center; margin-top:7px;">
+            <img id="img-avatar" style="border-radius: 50%;" class="right" src="settings-Dateien/bees_2CNIRgb.jpeg" height="64">&nbsp;&nbsp;&nbsp;
+          <p style="font-size: 240%;">anton</p>
+        </div>
+        <div class="row">
+          <div class="col s12 m12 l6" style="margin-bottom:10px;">
+            <label for="id_avatar">Avatar</label><br>
+            <input type="file" id="id_avatar" name="avatar" accept="image/*">
+          </div>
+          <div class="col s12 m12 l6">
+            <label for="id_color">Color</label><br>
+            <input style="box-sizing: border-box; height: 2rem; background-image: linear-gradient(to right, rgb(232, 117, 32) 0%, rgb(232, 117, 32) 30px, rgba(0, 0, 0, 0) 31px, rgba(0, 0, 0, 0) 100%), url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAeElEQVRIie3RsQ3AIAwEQKZ9r8EY/gUyC8zAME4TpcJgRYpE4eLLx4ddSJoXJQ0CA5wIjOr3SU57AljvzWqtV9kCvOHPQ6s+qS689b4HUNcAAEbqEiHuBiIA7wdvJHACmXaDgMgGvvUTcA7grwG7/hgjAQlIwBmAG5tZBUs4xlcoAAAAAElFTkSuQmCC&quot;) !important; background-position: left top, left top !important; background-size: auto, 32px 16px !important; background-repeat: repeat-y, repeat-y !important; background-origin: padding-box, padding-box !important; padding-left: 40px !important;" id="id_color" value="#E87520" data-jscolor="{onInput:'update(this)'}" class="jscolor" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" data-current-color="#E87520">
+          </div>
+        </div>
+        <div class="row" style="margin-bottom:0px;">
+          <div class="col s12 m12 l6">
+            <label for="offers">Offers</label>
+            <div id="offers" class="chips input-field">
+          </div>
+        </div>
+
+          <div class="col s12 m12 l6">
+            <label for="requests">Needs</label>
+            <div id="requests" class="chips input-field">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m12">
+        <form method="POST" onsubmit="return submitForm(this)">
+            <input type="hidden" name="csrfmiddlewaretoken" value="WTeJYw66Me18jjBsvmte3C294ozFUX8mw4qSkzKrstSBMOUULeyFVhVBKATRQkVk">
+            <div class="input-field">
+              <textarea id="id_text" name="text" class="materialize-textarea" style="height: 480px;">
+ich bin 34 Jahre und wohne in Bad Salzschlirf bei Fulda. Bin seit letztem Jahr aus Kolumbien zurück, wo ich drei Jahre in einer Gemeinschaft mitten in der Natur gelebt habe. Die Prinzipien des Zusammenlebens waren an #Rainbow Gatherings angelehnt. Die Zeit dort war sehr inspirierend. Letzten Sommer in meine Heimat zurückgekehrt und glaube, dass auch hier ein Leben in diesem Bewusstsein und Verbindung mit der Natur machbar ist.
+
+Ich interessiere mich auch für Permakultur und möchte mich zusammen mit anderen Menschen selbst zu versorgen. Ich programmiere gerne Webseiten und glaube, dass eine Karte wie diese hier ein Werkzeug sein kann um uns lokal zu vernetzen, ein dezentrales Netzwerk als Alternative zu unsrem scheiternden System zu erschaffen und unseren Planeten zu heilen.
+
+Um Docutopia weiterzuentwickeln suche ich Hilfe von einem erfahrenen JavaScript Entwickler, der mir beim Refactoring des Codes helfen kann --> https://github.com/antontranelis/utopia
+   ... und bei der Umsetzung von Docutopia 3.0 ---> https://notes.healing-the-planet.one/s/HyAM2Osqd
+
+Ich baue aktuell auch ein Tiny House. Ich bin noch auf der Suche nach einer Scheune oder Halle, wo ich im kommenden Winter an dem Projekt weiterarbeiten kann.
+
+Weiter suche ich nach Menschen, die auch gerne in Gemeinschaft und in der Natur leben möchten. Ich bin zeitlich und örtlich flexibel. Habe einen Bus in dem ich wohnen und reisen kann. Ich bin an persönlichen Treffen interessiert zum Kennenlernen, entwickeln und umsetzen von Ideen, suchen nach Land und leben in Gemeinschaft.
+
+📞 0176-32199092
+📧 mail@antontranelis.de
+
+--------------------------------------------------
+
+Gedanken 💭  -  März 2021 -   https://notes.healing-the-planet.one/s/BJ2ZKU1ju#
+📢 Erklärung    - Juni 2021 -     https://notes.healing-the-planet.one/s/SJ4RrUTq_#</textarea>
+              <label for="id_text" class="active">Text</label>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal" style="margin: 0px auto;" tabindex="0">
+      <div class="modal-content" style="margin: 0px auto;">
+        <div style="margin: 0px auto;">
+          <img id="crop_image" alt="Picture" style="width: 100%;" height="300px">
+        </div>
+      </div>
+      <div class="modal-footer" style="margin: 0px auto;">
+        <a onclick="finishCropping()" class="modal-close waves-effect waves-green btn-flat">Select</a>
+      </div>
+    </div>
+
+  </div>
+  <script type="text/javascript">
+    var file_input;
+    var modal;
+    var cropper;
+    var cropped_image;
+    var offers_input;
+    var offers = [];
+    var request_input;
+    var requests = [];
+    var color = '#E87520';
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    modal = M.Modal.init(elems, {dismissible:false});
+    file_input = document.getElementById('id_avatar');
+    file_input.onchange = function(e) {
+      initCropper(file_input.files[0])
+    };
+
+  var elems0 = document.querySelectorAll('#offers');
+  offers_input = M.Chips.init(elems0, {
+    data: [
+
+    {
+      tag: 'Plant Medicine'
+    },
+
+    {
+      tag: 'Web Development'
+    },
+
+    {
+      tag: 'Wood Construction'
+    },
+
+    {
+      tag: 'Solar Energy'
+    },
+
+    {
+      tag: 'Smartphone Rooting'
+    },
+
+    {
+      tag: 'Computer Repair'
+    },
+
+    {
+      tag: 'IT Security'
+    },
+
+    {
+      tag: 'Love'
+    },
+
+    {
+      tag: 'Tinyhouse Construction'
+    },
+
+    {
+      tag: 'Harmony'
+    },
+    ],
+    autocompleteOptions: {
+      data: {
+
+          'Plant Medicine' : null,
+
+          'Web Development' : null,
+
+          'Wood Construction' : null,
+
+          'Solar Energy Knowledge' : null,
+
+          'Solar Energy' : null,
+
+          'People' : null,
+
+          'Living in Nature' : null,
+
+          'Local Food' : null,
+
+          'Communities' : null,
+
+          'Circles at the fire' : null,
+
+          'Ayahuasca' : null,
+
+          'filmproduction' : null,
+
+          'herbal tea' : null,
+
+          'cooking' : null,
+
+          'childcare' : null,
+
+          'Gardenlife' : null,
+
+          'wood' : null,
+
+          'bookpublisher' : null,
+
+          'translator' : null,
+
+          'cinema' : null,
+
+          'festival' : null,
+
+          'screening' : null,
+
+          'musicproducers' : null,
+
+          'voluteers' : null,
+
+          'gardening' : null,
+
+          'gardenlife' : null,
+
+          'shelter' : null,
+
+          'campground' : null,
+
+          'audiovisual arts' : null,
+
+          'land art' : null,
+
+          'musicproducer' : null,
+
+          'companions' : null,
+
+          'sing and (song)writing' : null,
+
+          'natural education' : null,
+
+          'helping hand' : null,
+
+          'exhibitionspace' : null,
+
+          'time' : null,
+
+          'Liebe' : null,
+
+          'JavaScript Expert' : null,
+
+          'wild herbs' : null,
+
+          'mushroom cultivation' : null,
+
+          'photography' : null,
+
+          'videography' : null,
+
+          'connection' : null,
+
+          'art' : null,
+
+          'mindwalks' : null,
+
+          'family' : null,
+
+          'garden' : null,
+
+          'life' : null,
+
+          'everyday help' : null,
+
+          'everyday support' : null,
+
+          'Animal care' : null,
+
+          'child care' : null,
+
+          'shopping for others' : null,
+
+          'Repair bike' : null,
+
+          'watering flowers' : null,
+
+          'Accept packages' : null,
+
+          'Animal Assisted Therapy' : null,
+
+          'Healing' : null,
+
+          'Culture' : null,
+
+          'Art' : null,
+
+          'activism' : null,
+
+          'Medicinal plants knowledge' : null,
+
+          'dry wood' : null,
+
+          'Art manager' : null,
+
+          'Smartphone Rooting' : null,
+
+          'Plant Care' : null,
+
+          'Lösungen ,Ideen, Impulse, Kreativität,  ....' : null,
+
+          'Netzwerk, Tauschbörse...die Wunscherfüller.... ' : null,
+
+          'Die kulturInitiative....alles was KULTUR ausmacht ...eine lebendige Gesellige phantasievolle Kultur des Miteinanders...entwickeln....gemeinsam statt einsam' : null,
+
+          'Lehmbaukurse für jung und alt....der VulkanOfen...🌈🔥🔥🔥🔥🏞🤗' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Funktionierendes OrgaTeam.... Unterstützung in der Planung und umsetzung' : null,
+
+          'Vereinsgründung, freie Trägerschaft,  oder cooperation...💚🌈😊' : null,
+
+          'GbR Gründung ...wer kennt sich da aus,  oder möchte sich aktiv am Aufbau beteiligen. .👀' : null,
+
+          'Computer Repair' : null,
+
+          'Car Mechanic' : null,
+
+          'IT Security' : null,
+
+          'Rapé' : null,
+
+          'Ceremony Singing' : null,
+
+          'Jaw Harp' : null,
+
+          'Throatsinging' : null,
+
+          'Didgeridoo' : null,
+
+          'Cheyenne Frame Drum' : null,
+
+          'Massage &amp; Reiki' : null,
+
+          'Communitiy' : null,
+
+          'Caravan Place' : null,
+
+          'Massage &amp;amp; Reiki' : null,
+
+          'dry fire wood' : null,
+
+          'art manager' : null,
+
+          'Wald' : null,
+
+          'Shelter' : null,
+
+          'Food' : null,
+
+          'Musicproduction' : null,
+
+          'Sweatlodge' : null,
+
+          'Holzwerkstatt' : null,
+
+          'Family' : null,
+
+          'FliegendeBautenSelbsthilfewerkstatt' : null,
+
+          'Tantra wisdom, Love, workshops, lectures, massages' : null,
+
+          'Massages' : null,
+
+          'Students, receivers, clients' : null,
+
+          'translators' : null,
+
+          'music recording studio' : null,
+
+          'book publisher' : null,
+
+          'exhibition space' : null,
+
+          'Netzwerk, Tauschbörse...die Wunscherfüller....' : null,
+
+          'musician' : null,
+
+          'music mastering' : null,
+
+          'house (re)construction' : null,
+
+          'Tatra' : null,
+
+          'Tantra Wisdom' : null,
+
+          'Workshops' : null,
+
+          'Lectures' : null,
+
+          'Students' : null,
+
+          'Receivers' : null,
+
+          'Clients' : null,
+
+          'Love' : null,
+
+          'macrame art' : null,
+
+          'streetmusic' : null,
+
+          'tarot reading' : null,
+
+          'gig' : null,
+
+          'concert' : null,
+
+          'event space' : null,
+
+          'Tinyhouse Construction' : null,
+
+          'Tinyhouse Workspace' : null,
+
+          'AtemTherapie ' : null,
+
+          'Rebirthing ' : null,
+
+          'Earthship' : null,
+
+          'Agni Hotra' : null,
+
+          'Mantra Singing' : null,
+
+          'Rio Abierto' : null,
+
+          'Bewegung und Tanz' : null,
+
+          'Orgoniten' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Mantra Group' : null,
+
+          'Singing' : null,
+
+          'Dancing ' : null,
+
+          'Harmony' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp;amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Kunsttherapie ' : null,
+
+          'Wald ' : null,
+
+          'Yoga' : null,
+
+          'Tandava' : null,
+
+          'Zen ' : null,
+
+          'Contact ' : null,
+
+          'Tiere' : null,
+
+          'Tanzen' : null,
+
+          'Inspiration ' : null,
+
+          'Berge ' : null,
+
+      },
+    },
+    placeholder: 'I can offer ...',
+    secondaryPlaceholder: '+ offer',
+    onChipAdd: function () {
+      console.log(offers_input[0].chipsData);
+    },
+  });
+
+  var elems1 = document.querySelectorAll('#requests');
+  request_input = M.Chips.init(elems1, {
+    data: [
+
+    {
+      tag: 'Living in Nature'
+    },
+
+    {
+      tag: 'Local Food'
+    },
+
+    {
+      tag: 'Communities'
+    },
+
+    {
+      tag: 'Circles at the fire'
+    },
+
+    {
+      tag: 'JavaScript Expert'
+    },
+
+    {
+      tag: 'Car Mechanic'
+    },
+
+    {
+      tag: 'Love'
+    },
+
+    {
+      tag: 'Tinyhouse Workspace'
+    },
+
+    {
+      tag: 'Harmony'
+    },
+    ],
+    autocompleteOptions: {
+      data: {
+
+          'Plant Medicine' : null,
+
+          'Web Development' : null,
+
+          'Wood Construction' : null,
+
+          'Solar Energy Knowledge' : null,
+
+          'Solar Energy' : null,
+
+          'People' : null,
+
+          'Living in Nature' : null,
+
+          'Local Food' : null,
+
+          'Communities' : null,
+
+          'Circles at the fire' : null,
+
+          'Ayahuasca' : null,
+
+          'filmproduction' : null,
+
+          'herbal tea' : null,
+
+          'cooking' : null,
+
+          'childcare' : null,
+
+          'Gardenlife' : null,
+
+          'wood' : null,
+
+          'bookpublisher' : null,
+
+          'translator' : null,
+
+          'cinema' : null,
+
+          'festival' : null,
+
+          'screening' : null,
+
+          'musicproducers' : null,
+
+          'voluteers' : null,
+
+          'gardening' : null,
+
+          'gardenlife' : null,
+
+          'shelter' : null,
+
+          'campground' : null,
+
+          'audiovisual arts' : null,
+
+          'land art' : null,
+
+          'musicproducer' : null,
+
+          'companions' : null,
+
+          'sing and (song)writing' : null,
+
+          'natural education' : null,
+
+          'helping hand' : null,
+
+          'exhibitionspace' : null,
+
+          'time' : null,
+
+          'Liebe' : null,
+
+          'JavaScript Expert' : null,
+
+          'wild herbs' : null,
+
+          'mushroom cultivation' : null,
+
+          'photography' : null,
+
+          'videography' : null,
+
+          'connection' : null,
+
+          'art' : null,
+
+          'mindwalks' : null,
+
+          'family' : null,
+
+          'garden' : null,
+
+          'life' : null,
+
+          'everyday help' : null,
+
+          'everyday support' : null,
+
+          'Animal care' : null,
+
+          'child care' : null,
+
+          'shopping for others' : null,
+
+          'Repair bike' : null,
+
+          'watering flowers' : null,
+
+          'Accept packages' : null,
+
+          'Animal Assisted Therapy' : null,
+
+          'Healing' : null,
+
+          'Culture' : null,
+
+          'Art' : null,
+
+          'activism' : null,
+
+          'Medicinal plants knowledge' : null,
+
+          'dry wood' : null,
+
+          'Art manager' : null,
+
+          'Smartphone Rooting' : null,
+
+          'Plant Care' : null,
+
+          'Lösungen ,Ideen, Impulse, Kreativität,  ....' : null,
+
+          'Netzwerk, Tauschbörse...die Wunscherfüller.... ' : null,
+
+          'Die kulturInitiative....alles was KULTUR ausmacht ...eine lebendige Gesellige phantasievolle Kultur des Miteinanders...entwickeln....gemeinsam statt einsam' : null,
+
+          'Lehmbaukurse für jung und alt....der VulkanOfen...🌈🔥🔥🔥🔥🏞🤗' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Funktionierendes OrgaTeam.... Unterstützung in der Planung und umsetzung' : null,
+
+          'Vereinsgründung, freie Trägerschaft,  oder cooperation...💚🌈😊' : null,
+
+          'GbR Gründung ...wer kennt sich da aus,  oder möchte sich aktiv am Aufbau beteiligen. .👀' : null,
+
+          'Computer Repair' : null,
+
+          'Car Mechanic' : null,
+
+          'IT Security' : null,
+
+          'Rapé' : null,
+
+          'Ceremony Singing' : null,
+
+          'Jaw Harp' : null,
+
+          'Throatsinging' : null,
+
+          'Didgeridoo' : null,
+
+          'Cheyenne Frame Drum' : null,
+
+          'Massage &amp; Reiki' : null,
+
+          'Communitiy' : null,
+
+          'Caravan Place' : null,
+
+          'Massage &amp;amp; Reiki' : null,
+
+          'dry fire wood' : null,
+
+          'art manager' : null,
+
+          'Wald' : null,
+
+          'Shelter' : null,
+
+          'Food' : null,
+
+          'Musicproduction' : null,
+
+          'Sweatlodge' : null,
+
+          'Holzwerkstatt' : null,
+
+          'Family' : null,
+
+          'FliegendeBautenSelbsthilfewerkstatt' : null,
+
+          'Tantra wisdom, Love, workshops, lectures, massages' : null,
+
+          'Massages' : null,
+
+          'Students, receivers, clients' : null,
+
+          'translators' : null,
+
+          'music recording studio' : null,
+
+          'book publisher' : null,
+
+          'exhibition space' : null,
+
+          'Netzwerk, Tauschbörse...die Wunscherfüller....' : null,
+
+          'musician' : null,
+
+          'music mastering' : null,
+
+          'house (re)construction' : null,
+
+          'Tatra' : null,
+
+          'Tantra Wisdom' : null,
+
+          'Workshops' : null,
+
+          'Lectures' : null,
+
+          'Students' : null,
+
+          'Receivers' : null,
+
+          'Clients' : null,
+
+          'Love' : null,
+
+          'macrame art' : null,
+
+          'streetmusic' : null,
+
+          'tarot reading' : null,
+
+          'gig' : null,
+
+          'concert' : null,
+
+          'event space' : null,
+
+          'Tinyhouse Construction' : null,
+
+          'Tinyhouse Workspace' : null,
+
+          'AtemTherapie ' : null,
+
+          'Rebirthing ' : null,
+
+          'Earthship' : null,
+
+          'Agni Hotra' : null,
+
+          'Mantra Singing' : null,
+
+          'Rio Abierto' : null,
+
+          'Bewegung und Tanz' : null,
+
+          'Orgoniten' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Mantra Group' : null,
+
+          'Singing' : null,
+
+          'Dancing ' : null,
+
+          'Harmony' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Tinyhouse Projekt,  ökologisch bauen &amp;amp;amp;amp;amp;amp; autark Leben...🔥🌈🏞🤗💚💏' : null,
+
+          'Kunsttherapie ' : null,
+
+          'Wald ' : null,
+
+          'Yoga' : null,
+
+          'Tandava' : null,
+
+          'Zen ' : null,
+
+          'Contact ' : null,
+
+          'Tiere' : null,
+
+          'Tanzen' : null,
+
+          'Inspiration ' : null,
+
+          'Berge ' : null,
+
+      },
+    },
+    placeholder: "I'm looking for ...",
+    secondaryPlaceholder: '+ need',
+    onChipAdd: function () {
+      console.log(offers_input[0].chipsData);
+    },
+  });
+});
+
+function submitForm(form) {
+  const XHR = new XMLHttpRequest();
+  var FD = new FormData( form );
+  console.log(file_input.files);
+  if(file_input.files.length > 0) {
+    FD.append('avatar', cropped_image, file_input.files[0].name)
+  }
+  else {
+    FD.append('avatar', "")
+  }
+  offers_input[0].chipsData.forEach((item, i) => {
+    FD.append('offers', item.tag)
+  });
+  request_input[0].chipsData.forEach((item, i) => {
+    FD.append('requests', item.tag)
+  });
+  FD.append('color', color)
+  console.log(offers);
+  XHR.open( "POST", "../settings/" );
+  XHR.onload = (r) => {
+    window.location.href = window.location.protocol + "//" + window.location.host + "/";
+  }
+  XHR.onerror = () => {
+    console.log("error");
+    console.log(r);
+  }
+  XHR.send(FD);
+
+  return false;
+
+}
+
+// === RESIZE ====
+
+function resizeBlob(blob) {
+  var img = new Image();
+  img.src = URL.createObjectURL(blob);
+  img.onload = function() {
+
+    var canvas = document.createElement('canvas');
+
+    // resize the canvas and draw the image data into it
+    canvas.width = 64;
+    canvas.height = 64;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, 64, 64);
+    canvas.toBlob(blb => cropped_image = blb);
+  }
+}
+
+function initCropper(file) {
+  var img = new Image();
+  var url;
+  img.src = URL.createObjectURL(file);
+  img.onload = function() {
+
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var MAX_WIDTH = 400;
+    var MAX_HEIGHT = 400;
+    var width = img.width;
+    var height = img.height;
+
+    if (width > height) {
+        if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+        }
+    } else {
+        if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+        }
+    }
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, width, height);
+    url = canvas.toDataURL(file_input.files[0].type);
+
+    modal[0].open();
+    console.log(file_input.files[0]);
+    var image = document.querySelector('#crop_image');
+    image.src=url;
+    image.onload = function() {
+      cropper = new Cropper(image, {
+        aspectRatio: 1,
+        movable: false,
+        zoomable: false,
+      });
+    }
+  }
+}
+
+function finishCropping() {
+  cropper.getCroppedCanvas().toBlob((blob) => {
+    document.getElementById('img-avatar').setAttribute('src', URL.createObjectURL(blob))
+    resizeBlob(blob);
+    cropper.destroy();
+  });
+}
+
+function update(picker) {
+  color = picker.toString();
+}
+
+
+</script>
+
+
+<div class="hiddendiv common" style="font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; line-height: normal; padding: 12px 0px; width: 1257.5px;">ich bin 34 Jahre und wohne in Bad Salzschlirf bei Fulda. Bin seit letztem Jahr aus Kolumbien zurück, wo ich drei Jahre in einer Gemeinschaft mitten in der Natur gelebt habe. Die Prinzipien des Zusammenlebens waren an #Rainbow Gatherings angelehnt. Die Zeit dort war sehr inspirierend. Letzten Sommer in meine Heimat zurückgekehrt und glaube, dass auch hier ein Leben in diesem Bewusstsein und Verbindung mit der Natur machbar ist. <br><br>Ich interessiere mich auch für Permakultur und möchte mich zusammen mit anderen Menschen selbst zu versorgen. Ich programmiere gerne Webseiten und glaube, dass eine Karte wie diese hier ein Werkzeug sein kann um uns lokal zu vernetzen, ein dezentrales Netzwerk als Alternative zu unsrem scheiternden System zu erschaffen und unseren Planeten zu heilen.<br><br>Um Docutopia weiterzuentwickeln suche ich Hilfe von einem erfahrenen JavaScript Entwickler, der mir beim Refactoring des Codes helfen kann --&gt; https://github.com/antontranelis/utopia<br>    ... und bei der Umsetzung von Docutopia 3.0 ---&gt; https://notes.healing-the-planet.one/s/HyAM2Osqd<br><br>Ich baue aktuell auch ein Tiny House. Ich bin noch auf der Suche nach einer Scheune oder Halle, wo ich im kommenden Winter an dem Projekt weiterarbeiten kann.<br><br>Weiter suche ich nach Menschen, die auch gerne in Gemeinschaft und in der Natur leben möchten. Ich bin zeitlich und örtlich flexibel. Habe einen Bus in dem ich wohnen und reisen kann. Ich bin an persönlichen Treffen interessiert zum Kennenlernen, entwickeln und umsetzen von Ideen, suchen nach Land und leben in Gemeinschaft.<br><br>📞 0176-32199092<br>📧 mail@antontranelis.de<br><br>--------------------------------------------------<br><br>Gedanken 💭  -  März 2021 -   https://notes.healing-the-planet.one/s/BJ2ZKU1ju#<br>📢 Erklärung    - Juni 2021 -     https://notes.healing-the-planet.one/s/SJ4RrUTq_#<br></div></body></html>

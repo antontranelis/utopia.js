@@ -9,8 +9,13 @@ import {
   Layer,
   Map,
   Marker,
-  TileLayer
-} from "../node_modules/leaflet/dist/leaflet-src.esm.js"
+  TileLayer,
+  Icon,
+  Util,
+  point,
+  geoJSON,
+  Popup
+} from "../../node_modules/leaflet/dist/leaflet-src.esm.js"
 
 export {
   Control,
@@ -22,7 +27,10 @@ export {
   Layer,
   Map,
   Marker,
-  TileLayer
+  TileLayer,
+  Icon,
+  geoJSON,
+  Popup
 }
 
 /*
@@ -32,7 +40,10 @@ export {
 window.L = {
   Control,
   DomEvent,
-  DomUtil
+  DomUtil,
+  Icon,
+  Util,
+  point
 }
 
 console.log("myLeaflet.js working");

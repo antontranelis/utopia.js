@@ -1,8 +1,8 @@
 import {
-  Map,
-  TileLayer,
-  PlaceMarker
-} from "./utopiaMap.js"
+  UtopiaMap
+} from "./Map/map.js"
+
+import { config } from "../config/appConfig.js"
 
 // import * as M from "../node_modules/@materializecss/materialize/dist/js/materialize.min.js"
 // import "thePlugin"
@@ -13,17 +13,12 @@ const L = window.L
 //const thePlugin = L.thePlugin()
 //const theOtherPlugin = new L.Control.theOtherPlugin(options)
 
-const mymap = new Map('leafletmap').setView([51, 9.5], 6);
+const map = new UtopiaMap('leafletmap').setView(config.position, config.zoom);
 //theOtherPlugin.addTo(map)
-new TileLayer('https://tile.osmand.net/hd/{z}/{x}/{y}.png', {
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  maxZoom: 18,
-}).addTo(mymap);
 
-populateMap()
 
-function populateMap(){
-  new PlaceMarker([51.5, -0.09]).addTo(mymap);
-}
+map.populateMap();
+
+
 
 console.log("app.js working");
