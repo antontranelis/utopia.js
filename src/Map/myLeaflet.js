@@ -14,7 +14,8 @@ import {
   Util,
   point,
   geoJSON,
-  Popup
+  Popup,
+  setOptions
 } from "../../node_modules/leaflet/dist/leaflet-src.esm.js"
 
 export {
@@ -30,7 +31,8 @@ export {
   TileLayer,
   Icon,
   geoJSON,
-  Popup
+  Popup,
+  setOptions
 }
 
 /*

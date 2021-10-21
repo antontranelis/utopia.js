@@ -1,31 +1,48 @@
 import {
   Control,
   Map,
-  Marker,
   TileLayer,
-  Icon,
   geoJSON
 } from "./myLeaflet.js"
 
-import {data} from "../../sampleData/data.js"
+import {places, events, profiles} from "../../sampleData/data.js"
+import {PlacePopup, EventPopup, ProfilePopup} from "./popups.js"
+import {PlaceMarker, EventMarker, ProfileMarker} from "./markers.js"
 
-import {EventPopup} from "./popups.js"
-
-import * as ExtraMarkers from "../Libraries/leaflet-extra-markers/js/leaflet.extra-markers.js"
 
 let UtopiaMap = Map.extend({
   populateMap: function (){
-    geoJSON(data, {
+    geoJSON(places, {
       pointToLayer: function (feature, latlng) {
-        if (feature.properties.category == "Place")
-          return new Marker(latlng, {icon: placeIcon});
-        if (feature.properties.category == "Event")
-          return new Marker(latlng, {icon: eventIcon});
-        if (feature.properties.category == "Profile")
-          return new Marker(latlng, {icon: profileIcon});
+          return new PlaceMarker(latlng);
+      },
+      onEachFeature: function (feature, layer) {
+          layer.bindPopup(new PlacePopup(feature));
       }
     }
-).bindPopup(new EventPopup).addTo(this);
+).addTo(this);
+
+geoJSON(events, {
+  pointToLayer: function (feature, latlng) {
+      return new EventMarker(latlng);
+  },
+  onEachFeature: function (feature, layer) {
+      layer.bindPopup(new EventPopup(feature));
+  }
+}
+).addTo(this);
+
+geoJSON(profiles, {
+  pointToLayer: function (feature, latlng) {
+      return new ProfileMarker(latlng);
+  },
+  onEachFeature: function (feature, layer) {
+      layer.bindPopup(new ProfilePopup(feature));
+  }
+}
+).addTo(this);
+
+
   }
 });
 
@@ -35,33 +52,6 @@ UtopiaMap.addInitHook(function(){
     maxZoom: 18,
   }).addTo(this);
 });
-
-var placeIcon = L.ExtraMarkers.icon({
-  icon: 'fa-circle',
-  markerColor: `#666`,
-  svgBorderColor: `RGBA(35, 31, 32, 0.2)`,
-  shape: 'circle',
-  prefix: 'fa',
-  svg: true
-  });
-
-var eventIcon = L.ExtraMarkers.icon({
-  icon: 'fa-calendar-alt',
-  markerColor: `#0696bb`,
-  svgBorderColor: `RGBA(0, 0, 0, 1)`,
-  shape: 'square',
-  prefix: 'fa',
-  svg: true
-  });
-
-var profileIcon = L.ExtraMarkers.icon({
-  icon: 'fa-user',
-  markerColor: `#E87520`,
-  svgBorderColor: `RGBA(35, 31, 32, 0.2)`,
-  shape: 'square',
-  prefix: 'fa',
-  svg: true
-  });
 
 export {
   UtopiaMap,
