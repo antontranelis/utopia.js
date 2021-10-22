@@ -51,5 +51,6 @@ let profiles = {
 }
 let resources = {}
 let tasks = {}
+let hashtags = {}
 
 export {places, events, profiles};
