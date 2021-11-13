@@ -6,7 +6,10 @@ import {
 import {ExtraMarkers} from "../Libraries/leaflet-extra-markers/js/leaflet.extra-markers.js"
 
 let PlaceMarker = Marker.extend({
-
+  initialize: function(place) {
+    this.id = place._['#'];
+    this.setLatLng([place.lat,place.lng]);
+  }
 })
 
 PlaceMarker.addInitHook(function() {
@@ -15,7 +18,10 @@ PlaceMarker.addInitHook(function() {
 
 
 let EventMarker = Marker.extend({
-
+  initialize: function(event) {
+    this.id = event._['#'];
+    this.setLatLng([event.lat,event.lng]);
+  }
 })
 
 EventMarker.addInitHook(function() {

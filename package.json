@@ -13,7 +13,9 @@
     "@materializecss/materialize": "^1.1.0-alpha",
     "gun": "^0.2020.1235",
     "leaflet": "^1.7.1",
-    "leaflet-extra-markers": "^1.2.1"
+    "leaflet-extra-markers": "^1.2.1",
+    "leaflet.markercluster": "^1.5.3",
+    "leaflet.markercluster.layersupport": "^2.0.1"
   },
   "devDependencies": {
     "eslint": "^7.32.0"

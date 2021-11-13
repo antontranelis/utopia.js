@@ -1,12 +1,16 @@
 /* myLeaflet.js */
 import {
   Control,
+  FeatureGroup,
+  featureGroup,
+  control,
   DomEvent,
   DomUtil,
   Evented,
   LatLng,
   LatLngBounds,
   Layer,
+  LayerGroup,
   Map,
   Marker,
   TileLayer,
@@ -15,24 +19,35 @@ import {
   point,
   geoJSON,
   Popup,
-  setOptions
+  setOptions,
+  extend,
+  stamp,
+  Browser,
+  bind,
+  Point,
+  DivIcon,
+  Polygon,
+  Path,
+  Polyline
 } from "../../node_modules/leaflet/dist/leaflet-src.esm.js"
 
 export {
-  Control,
+  control,
   DomEvent,
   DomUtil,
   Evented,
   LatLng,
   LatLngBounds,
   Layer,
+  LayerGroup,
   Map,
   Marker,
   TileLayer,
   Icon,
   geoJSON,
   Popup,
-  setOptions
+  setOptions,
+
 }
 
 /*
@@ -45,7 +60,22 @@ window.L = {
   DomUtil,
   Icon,
   Util,
-  point
+  point,
+  FeatureGroup,
+  Marker,
+  LatLng,
+  LatLngBounds,
+  featureGroup,
+  extend,
+  LayerGroup,
+  stamp,
+  Browser,
+  bind,
+  Point,
+  DivIcon,
+  Polygon,
+  Path,
+  Polyline
 }
 
 console.log("myLeaflet.js working");
