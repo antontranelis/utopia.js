@@ -47,7 +47,8 @@ export {
   geoJSON,
   Popup,
   setOptions,
-
+  Point,
+  DivIcon
 }
 
 /*
@@ -71,11 +72,10 @@ window.L = {
   stamp,
   Browser,
   bind,
-  Point,
-  DivIcon,
   Polygon,
   Path,
-  Polyline
+  Polyline,
+  Point
 }
 
 console.log("myLeaflet.js working");

@@ -4,6 +4,8 @@ import {
   TileLayer,
   DomUtil,
   LayerGroup,
+  Point,
+  DivIcon
 } from "../Libraries/myLeaflet.js"
 import {
   PlacePopup,
@@ -18,53 +20,70 @@ import {
 } from "./markers.js"
 
 import '../../node_modules/leaflet.markercluster/dist/leaflet.markercluster-src.js';
-
 import '../../node_modules/leaflet.markercluster.layersupport/dist/leaflet.markercluster.layersupport-src.js';
 
 
 let UtopiaMap = Map.extend({
-  addPlace: function(place) {
-    let element = Object.values(this.place_layer._layers).filter(item => {
-      return item.id == place._['#'];
-    })
-    if(element.length == 0) new PlaceMarker(place).bindPopup(new PlacePopup(place)).addTo(this.place_layer);
+  addPlace: function(item) {
+    let layerGroup = this.place_layer;
+    this.place_layer.eachLayer(function (layer) {
+        if(layer.item._['#'] == item._['#']) {
+          layer.remove();
+          layer.removeFrom(layerGroup);
+        }
+    });
+    new PlaceMarker(item).bindPopup(new PlacePopup(item)).addTo(this.place_layer);
   },
-  removePlace: function(id) {
-    let element = Object.values(this.place_layer._layers).filter(item => {
-      return item.id == id;
-    })
-    element[0].remove();
+  addEvent: function(item) {
+    let layerGroup = this.event_layer;
+    this.event_layer.eachLayer(function (layer) {
+        if(layer.item._['#'] == item._['#']) {
+          layer.remove();
+          layer.removeFrom(layerGroup);
+        }
+    });
+    new EventMarker(item).bindPopup(new EventPopup(item)).addTo(this.event_layer);
   },
-  addEvent: function(event) {
-    let element = Object.values(this.event_layer._layers).filter(item => {
-      return item.id == event._['#'];
+  removeItem: function(item) {
+    let layers;
+    if (item.type == "place"){
+      layers = this.place_layer._layers;
+    }
+    if (item.type == "event"){
+      layers = this.event_layer._layers;
+    }
+    let elements = Object.values(layers).filter(element => {
+      return element.item == item;
     })
-    if(element.length == 0) new EventMarker(event).bindPopup(new EventPopup(event)).addTo(this.event_layer);
+    console.log(elements);
+    if (elements.length > 0) {
+      elements.forEach((item, i) => {
+        item.remove(layers);
+      });
+    }
   },
-  removeEvent: function(id) {
-    let element = Object.values(this.event_layer._layers).filter(item => {
-      return item.id == id;
-    })
-    element[0].remove();
-  },
-  openFormPopup: function(type, latlng) {
-    L.DomUtil.removeClass(this._container, 'crosshair-cursor-enabled');
+  openFormPopup: function(item) {
+    console.log(item);
+    DomUtil.removeClass(this._container, 'crosshair-cursor-enabled');
     this.off('click');
-    if (type == "place") new EditPlacePopup(latlng).setLatLng([latlng.lat, latlng.lng]).openOn(this);
-    if (type == "event") {
-      let popup = new EditEventPopup(latlng).setLatLng([latlng.lat, latlng.lng]).openOn(this);
+    if (item.type == "place") new EditPlacePopup(item).openOn(this);
+    if (item.type == "event") {
+      let popup = new EditEventPopup(item).openOn(this);
       popup.initDatepicker();
     }
   },
-  selectPosition: function(type) {
-    console.log(type);
+  selectPosition: function(item) {
     M.toast({
-      html: `Select ${type} position!`,
+      html: `Select ${item.type} position!`,
       classes: 'darkgrey rounded',
       displayLength: 2000
     });
     DomUtil.addClass(this._container, 'crosshair-cursor-enabled');
-    this.on('click', event => this.openFormPopup(type, event.latlng));
+    this.on('click', event => {
+      item.lat = event.latlng.lat;
+      item.lng = event.latlng.lng;
+      this.openFormPopup(item);
+    });
   }
 });
 
@@ -114,10 +133,10 @@ UtopiaMap.addInitHook(function() {
       counts.sort(function(a, b) {
         return b.count - a.count
       });
-      return new L.DivIcon({
+      return new DivIcon({
         html: `<div style="background-color:${counts.length > 1 ? counts[1].color : counts[0].color};opacity: 0.9;"><div style="background-color:${counts[0].color}; opacity: 1;"><span><b>${childCount}</b></span></div></div>`,
         className: 'marker-cluster',
-        iconSize: new L.Point(40, 40)
+        iconSize: new Point(40, 40)
       });
     }
   });

@@ -6,9 +6,9 @@ import {
 import {ExtraMarkers} from "../Libraries/leaflet-extra-markers/js/leaflet.extra-markers.js"
 
 let PlaceMarker = Marker.extend({
-  initialize: function(place) {
-    this.id = place._['#'];
-    this.setLatLng([place.lat,place.lng]);
+  initialize: function(item) {
+    this.item = item;
+    this.setLatLng([item.lat,item.lng]);
   }
 })
 
@@ -18,9 +18,9 @@ PlaceMarker.addInitHook(function() {
 
 
 let EventMarker = Marker.extend({
-  initialize: function(event) {
-    this.id = event._['#'];
-    this.setLatLng([event.lat,event.lng]);
+  initialize: function(item) {
+    this.item = item;
+    this.setLatLng([item.lat,item.lng]);
   }
 })
 
@@ -39,8 +39,8 @@ ProfileMarker.addInitHook(function() {
 
 var placeIcon = ExtraMarkers.icon({
   icon: 'fa-circle',
-  markerColor: `#666`,
-  svgBorderColor: `RGBA(35, 31, 32, 0.2)`,
+  markerColor: `#2E7D32`,
+  svgBorderColor: `RGBA(35, 31, 32, 0.3)`,
   shape: 'circle',
   prefix: 'fa',
   svg: true
@@ -48,8 +48,8 @@ var placeIcon = ExtraMarkers.icon({
 
 var eventIcon = ExtraMarkers.icon({
   icon: 'fa-calendar-alt',
-  markerColor: `#0696bb`,
-  svgBorderColor: `RGBA(0, 0, 0, 1)`,
+  markerColor: `#f9a825`,
+  svgBorderColor: `RGBA(35, 31, 32, 0.3)`,
   shape: 'square',
   prefix: 'fa',
   svg: true

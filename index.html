@@ -26,16 +26,7 @@
 <body>
 	<nav>
 		<div style="z-index: 2000 !important; box-shadow: 0 1px 5px rgb(0 0 0 / 40%)" id="navbar" class="nav-wrapper brown">
-			<a style="margin-left:10px" href="/" class="brand-logo left"><b>DoCuToPiA</b></a>
-			<ul id="nav-mobile" class="right hide-on-down">
-				<li><a class="dropdown-trigger" data-target="dropdown1">anton<i style="width: 24px;" class="material-icons right">arrow_drop_down</i></a>
-					<ul id="dropdown1" class="dropdown-content" tabindex="0">
-						<li tabindex="0"><a href="settings.html">Settings</a></li>
-					  <li tabindex="0"><a href="/">Logout</a></li>
-					</ul>
-				</li>
-			</ul>
-			<img id="nav-avatar" style="border-radius: 50%;" class="right" src="/static/img/bees_2CNIRgb.png" height="44">&nbsp;&nbsp;&nbsp;
+			<a style="margin-left:10px" href="/" class="brand-logo left"><b id="app-name"></b></a>
 		</div>
 	</nav>
 	<div id="leafletmap" style="width: 100%;"></div>
@@ -44,10 +35,10 @@
 			<i class="large material-icons">add</i>
 		</a>
 		<ul>
-			<li><a class="btn-floating red darken-3" title="Share my Position"><i style="font-size: 18px;" class="fa fa-user"></i></a></li>
+			<!-- <li><a class="btn-floating red darken-3" title="Share my Position"><i style="font-size: 18px;" class="fa fa-user"></i></a></li> -->
 			<li><a class="btn-floating yellow darken-3" id="newEventButton" title="New Event"><i style="font-size: 18px;" class="fa fa-calendar-alt"></i></a></li>
 			<li><a class="btn-floating green darken-3" id="newPlaceButton" title="New Place"><i class="material-icons">location_on</i></a></li>
-			<li><a class="btn-floating blue darken-3" title="New Offer / Request"><i class="material-icons">local_offer</i></a></li>
+			<!-- <li><a class="btn-floating blue darken-3" title="New Offer / Request"><i class="material-icons">local_offer</i></a></li> -->
 		</ul>
 	</div>
 </body>

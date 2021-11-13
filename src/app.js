@@ -15,49 +15,51 @@ import {
 // eslint-disable-next-line no-unused-vars
 const L = window.L
 
-const utopuiaMap = new UtopiaMap('leafletmap').setView(config.position, config.zoom);
 
-var gun = Gun('http://localhost:8765/gun');
-var places = gun.get('54235555555555555555555555555555555344444');
-var events = gun.get('542355555555555555555554345345555555344444');
+const utopiaMap = new UtopiaMap('leafletmap').setView(config.position, config.zoom);
+
+
+
+var gun = Gun('https://gun-tt.herokuapp.com/gun');
+var places = gun.get('542355555555555552353466546545555555555344444');
+var events = gun.get('54235555555555345345r65464345345555555344444');
 
 places.map().on(item => {
-  if (item != null) utopuiaMap.addPlace(item)
-  //  else utopuiaMap.removePlace(item)
+  if (item != null) utopiaMap.addPlace(item)
 });
 events.map().on(item => {
-  if (item != null) utopuiaMap.addEvent(item)
+  if (item != null) utopiaMap.addEvent(item)
 });
+
+
+
 
 // Event Listeners
 
-document.getElementById("newPlaceButton").addEventListener("click", event => utopuiaMap.selectPosition("place"));
-document.getElementById("newEventButton").addEventListener("click", event => utopuiaMap.selectPosition("event"));
+document.getElementById("newPlaceButton").addEventListener("click", event => utopiaMap.selectPosition(new Place()));
+document.getElementById("newEventButton").addEventListener("click", event => utopiaMap.selectPosition(new Event()));
 
-utopuiaMap.on('popupopen', function(e) {
-  if (e.popup.type === "editPlace" || e.popup.type === "editEvent")
-    document.getElementById("form").addEventListener("submit", event => {
+utopiaMap.on('popupopen', function(e) {
+  if (e.popup.type === "editPlace" || e.popup.type === "editEvent") {
+    document.getElementById(e.popup.item.type+"form").addEventListener("submit", x => {
       let form = new FormData(event.target);
       if (form.get("type") == "place") places.set(gun.get(form.get("lat") + "," + form.get("lng")).put(new Place(form.get("lat"), form.get("lng"), form.get("title"), form.get("text"))))
       if (form.get("type") == "event") events.set(gun.get(form.get("lat") + "," + form.get("lng")).put(new Event(form.get("lat"), form.get("lng"), form.get("title"), form.get("text"), form.get("start"), form.get("end"))))
       event.preventDefault()
-      utopuiaMap.closePopup();
+      utopiaMap.closePopup();
     });
-  if (e.popup.type === "viewEvent") {
-    document.getElementById("delete_event").addEventListener("click", event => {
-      events.get(e.popup.id).put(null)
-      utopuiaMap.removeEvent(e.popup.id);
+    console.log(e.popup.item.type+"form");
+  }
+  if (e.popup.type === "viewEvent" || e.popup.type === "viewPlace") {
+    document.getElementById("deleteButton").addEventListener("click", event => {
+      if (e.popup.item.type === "event") events.get(e.popup.item._['#']).put(null)
+      if (e.popup.item.type === "place") places.get(e.popup.item._['#']).put(null)
+      utopiaMap.removeItem(e.popup.item);
     });
-    document.getElementById("edit_event").addEventListener("click", event => {
-      console.log(e);
-      //events.get(e.popup.id).put(null)
+    document.getElementById("editButton").addEventListener("click", event => {
+      utopiaMap.openFormPopup(e.popup.item)
     });
   }
-  if (e.popup.type === "viewPlace")
-    document.getElementById("delete_place").addEventListener("click", place => {
-      places.get(e.popup.id).put(null);
-      utopuiaMap.removePlace(e.popup.id);
-    });
 })
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -71,6 +73,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     hover: false
   });
   setMapHeight();
+  document.getElementById("app-name").innerHTML = config.name;
+  document.title = config.name;
 });
 
 window.addEventListener('resize', (event) => setMapHeight())
