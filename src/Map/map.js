@@ -10,13 +10,22 @@ import {
 import {
   PlacePopup,
   EventPopup,
+  HomePopup,
+  OfferPopup,
+  NeedPopup,
   EditPlacePopup,
-  EditEventPopup
+  EditEventPopup,
+  EditHomePopup,
+  EditOfferPopup,
+  EditNeedPopup,
+
 } from "./popups.js"
 import {
   PlaceMarker,
   EventMarker,
-  ProfileMarker
+  HomeMarker,
+  OfferMarker,
+  NeedMarker
 } from "./markers.js"
 
 import '../../node_modules/leaflet.markercluster/dist/leaflet.markercluster-src.js';
@@ -24,33 +33,74 @@ import '../../node_modules/leaflet.markercluster.layersupport/dist/leaflet.marke
 
 
 let UtopiaMap = Map.extend({
-  addPlace: function(item) {
-    let layerGroup = this.place_layer;
-    this.place_layer.eachLayer(function (layer) {
-        if(layer.item._['#'] == item._['#']) {
+  addItem: function(item) {
+    if (item.type == "place") {
+      let layerGroup = this.place_layer;
+      layerGroup.eachLayer(function(layer) {
+        if (layer.item._['#'] == item._['#']) {
           layer.remove();
           layer.removeFrom(layerGroup);
         }
-    });
-    new PlaceMarker(item).bindPopup(new PlacePopup(item)).addTo(this.place_layer);
-  },
-  addEvent: function(item) {
-    let layerGroup = this.event_layer;
-    this.event_layer.eachLayer(function (layer) {
-        if(layer.item._['#'] == item._['#']) {
+      });
+      new PlaceMarker(item).bindPopup(new PlacePopup(item)).addTo(this.place_layer);
+    }
+    if (item.type == "event") {
+      let layerGroup = this.event_layer;
+      layerGroup.eachLayer(function(layer) {
+        if (layer.item._['#'] == item._['#']) {
           layer.remove();
           layer.removeFrom(layerGroup);
         }
-    });
-    new EventMarker(item).bindPopup(new EventPopup(item)).addTo(this.event_layer);
+      });
+      new EventMarker(item).bindPopup(new EventPopup(item)).addTo(this.event_layer);
+    }
+    if (item.type == "home") {
+      let layerGroup = this.home_layer;
+      layerGroup.eachLayer(function(layer) {
+        if (layer.item._['#'] == item._['#']) {
+          layer.remove();
+          layer.removeFrom(layerGroup);
+        }
+      });
+      new HomeMarker(item).bindPopup(new HomePopup(item)).addTo(this.home_layer);
+    }
+    if (item.type == "offer") {
+      let layerGroup = this.offer_layer;
+      layerGroup.eachLayer(function(layer) {
+        if (layer.item._['#'] == item._['#']) {
+          layer.remove();
+          layer.removeFrom(layerGroup);
+        }
+      });
+      new OfferMarker(item).bindPopup(new OfferPopup(item)).addTo(this.offer_layer);
+    }
+    if (item.type == "need") {
+      let layerGroup = this.need_layer;
+      layerGroup.eachLayer(function(layer) {
+        if (layer.item._['#'] == item._['#']) {
+          layer.remove();
+          layer.removeFrom(layerGroup);
+        }
+      });
+      new NeedMarker(item).bindPopup(new NeedPopup(item)).addTo(this.need_layer);
+    }
   },
   removeItem: function(item) {
     let layers;
-    if (item.type == "place"){
+    if (item.type == "place") {
       layers = this.place_layer._layers;
     }
-    if (item.type == "event"){
+    if (item.type == "event") {
       layers = this.event_layer._layers;
+    }
+    if (item.type == "home") {
+      layers = this.home_layer._layers;
+    }
+    if (item.type == "offer") {
+      layers = this.offer_layer._layers;
+    }
+    if (item.type == "need") {
+      layers = this.need_layer._layers;
     }
     let elements = Object.values(layers).filter(element => {
       return element.item == item;
@@ -67,6 +117,9 @@ let UtopiaMap = Map.extend({
     DomUtil.removeClass(this._container, 'crosshair-cursor-enabled');
     this.off('click');
     if (item.type == "place") new EditPlacePopup(item).openOn(this);
+    if (item.type == "home") new EditHomePopup(item).openOn(this);
+    if (item.type == "offer") new EditOfferPopup(item).openOn(this);
+    if (item.type == "need") new EditNeedPopup(item).openOn(this);
     if (item.type == "event") {
       let popup = new EditEventPopup(item).openOn(this);
       popup.initDatepicker();
@@ -95,18 +148,31 @@ UtopiaMap.addInitHook(function() {
 
   this.event_layer = new LayerGroup();
   this.place_layer = new LayerGroup();
+  this.home_layer = new LayerGroup();
+  this.offer_layer = new LayerGroup();
+  this.need_layer = new LayerGroup();
   this.event_layer.addTo(this);
   this.place_layer.addTo(this);
+  this.home_layer.addTo(this);
+  this.offer_layer.addTo(this);
+  this.need_layer.addTo(this);
 
   var overlayMaps = {
-    "Events": this.event_layer,
+    "Homes": this.home_layer,
     "Places": this.place_layer,
+    "Events": this.event_layer,
+    "Offers": this.offer_layer,
+    "Needs": this.need_layer,
   };
 
   this.layercontrol = control.layers(null, overlayMaps, {
     collapsed: false,
     position: "bottomleft"
   }).addTo(this);
+  this.layercontrol.getContainer().childNodes[1].childNodes[2].childNodes.forEach((item, i) => {
+    L.DomUtil.addClass(item.childNodes[0].childNodes[0], 'reset-checkbox');
+    L.DomUtil.addClass(item.childNodes[0].childNodes[1], 'text-white');
+  });
 
 
 
@@ -142,6 +208,10 @@ UtopiaMap.addInitHook(function() {
   });
   this.all_layers.addLayer(this.event_layer);
   this.all_layers.addLayer(this.place_layer);
+  this.all_layers.addLayer(this.home_layer);
+  this.all_layers.addLayer(this.offer_layer);
+  this.all_layers.addLayer(this.need_layer);
+
   this.addLayer(this.all_layers);
 
 

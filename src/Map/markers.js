@@ -16,6 +16,38 @@ PlaceMarker.addInitHook(function() {
   this.setIcon(placeIcon);
 });
 
+let HomeMarker = Marker.extend({
+  initialize: function(item) {
+    this.item = item;
+    this.setLatLng([item.lat,item.lng]);
+  }
+})
+
+HomeMarker.addInitHook(function() {
+  this.setIcon(homeIcon);
+});
+
+let OfferMarker = Marker.extend({
+  initialize: function(item) {
+    this.item = item;
+    this.setLatLng([item.lat,item.lng]);
+  }
+})
+
+OfferMarker.addInitHook(function() {
+  this.setIcon(offerIcon);
+});
+
+let NeedMarker = Marker.extend({
+  initialize: function(item) {
+    this.item = item;
+    this.setLatLng([item.lat,item.lng]);
+  }
+})
+
+NeedMarker.addInitHook(function() {
+  this.setIcon(needIcon);
+});
 
 let EventMarker = Marker.extend({
   initialize: function(item) {
@@ -64,10 +96,38 @@ var profileIcon = ExtraMarkers.icon({
   svg: true
 });
 
+var homeIcon = ExtraMarkers.icon({
+  icon: 'fa-home',
+  markerColor: `#e32322`,
+  svgBorderColor: `RGBA(35, 31, 32, 0.2)`,
+  shape: 'square',
+  prefix: 'fa',
+  svg: true
+});
 
+var offerIcon = ExtraMarkers.icon({
+  icon: 'fa-heart',
+  markerColor: `#6d398b`,
+  svgBorderColor: `RGBA(35, 31, 32, 0.2)`,
+  shape: 'square',
+  prefix: 'fa',
+  svg: true
+});
+
+var needIcon = ExtraMarkers.icon({
+  icon: 'fa-question',
+  markerColor: `#444e99`,
+  svgBorderColor: `RGBA(35, 31, 32, 0.2)`,
+  shape: 'square',
+  prefix: 'fa',
+  svg: true
+});
 
 export {
   PlaceMarker,
   EventMarker,
-  ProfileMarker
+  ProfileMarker,
+  HomeMarker,
+  OfferMarker,
+  NeedMarker
 }
