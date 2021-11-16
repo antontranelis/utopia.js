@@ -29,7 +29,7 @@ import {
   Polygon,
   Path,
   Polyline
-} from "../../node_modules/leaflet/dist/leaflet-src.esm.js"
+} from "../../node_modules/leaflet/dist/leaflet.js"
 
 export {
   control,

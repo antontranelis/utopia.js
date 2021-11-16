@@ -6,11 +6,11 @@ let config = {
     "zoom": 6,
     "profiles": true,
     "layers": {
-      "places": "asderi3482390r80edj90wefk8667876864646hjh997w",
-      "events": "rseropwerc093490r834908fk456897467fj496j7674",
-      "homes": "asderi3482390r8098888888888777555555456r87fj89w",
-      "offers": "rseropsfwerwerwerwe34908fk456897467fj496j7674",
-      "needs": "345345543534asderi3482t345345435345r87fj89w1122",
+      "places": "asd00890980klkj0edj90we5345345345346774646hjh997w",
+      "events": "rser68678768kjjk3460r834908fk4568974670fj496j7674",
+      "homes": "asderi3482456546546756756758tzjdgg3453ftgn687fj89w",
+      "offers": "rseropsf53454berto9ßlioß0´ß456897467f099j496j7674",
+      "needs": "34534554353489089pio43zgdfgf4e53r34257uz6kkk9w1122",
     }
 }
 

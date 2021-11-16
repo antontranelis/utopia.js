@@ -64,7 +64,7 @@
   background-color: rgb(255, 255, 255) !important;
   border-radius: 5px !important;
   padding-left: 36px !important;
-  background-image: url('/static/map/img/search.png');
+  background-image: url('../img/search.png');
   background-position: 10px center;
   background-repeat: no-repeat;
   box-shadow: 0 1px 5px rgb(0 0 0 / 40%) !important;

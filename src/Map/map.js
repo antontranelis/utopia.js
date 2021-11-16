@@ -160,7 +160,7 @@ UtopiaMap.addInitHook(function() {
   var overlayMaps = {
     "Homes": this.home_layer,
     "Places": this.place_layer,
-    "Events": this.event_layer,
+    //"Events": this.event_layer,
     "Offers": this.offer_layer,
     "Needs": this.need_layer,
   };

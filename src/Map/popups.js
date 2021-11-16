@@ -67,7 +67,7 @@ let PlacePopup = Popup.extend({
           <a class="dropdown-trigger popup-dropdown-trigger" data-target='popup_dropdown'><i style="margin-top: 12px;" class="material-icons">more_vert</i></a>
         </div>
         <div class="col s12">
-          <div style="white-space: pre-line !important;">${item.text}</div>
+          <div style="white-space: pre-line !important;">${replaceURLs(item.text)}</div>
         </div>
       </div>
       `);
@@ -92,7 +92,10 @@ let HomePopup = Popup.extend({
           <a class="dropdown-trigger popup-dropdown-trigger" data-target='popup_dropdown'><i style="margin-top: 12px;" class="material-icons">more_vert</i></a>
         </div>
         <div class="col s12">
-          <div style="white-space: pre-line !important;">${item.text}</div>
+          <div style="white-space: pre-line !important; margin:18px 0;">${replaceURLs(item.text)}</div>
+        </div>
+        <div class="col s12">
+          <p style="margin-bottom:0px; margin-top:8px;">Contact: ${replaceURLs(item.contact)}</p>
         </div>
       </div>
       `);
@@ -117,7 +120,10 @@ let OfferPopup = Popup.extend({
           <a class="dropdown-trigger popup-dropdown-trigger" data-target='popup_dropdown'><i style="margin-top: 12px;" class="material-icons">more_vert</i></a>
         </div>
         <div class="col s12">
-          <div style="white-space: pre-line !important;">${item.text}</div>
+          <div style="white-space: pre-line !important;">${replaceURLs(item.text)}</div>
+        </div>
+        <div class="col s12">
+          <p style="margin-bottom:0px; margin-top:8px;">Contact: ${replaceURLs(item.contact)}</p>
         </div>
       </div>
       `);
@@ -142,7 +148,10 @@ let NeedPopup = Popup.extend({
           <a class="dropdown-trigger popup-dropdown-trigger" data-target='popup_dropdown'><i style="margin-top: 12px;" class="material-icons">more_vert</i></a>
         </div>
         <div class="col s12">
-          <div style="white-space: pre-line !important;">${item.text}</div>
+          <div style="white-space: pre-line !important;">${replaceURLs(item.text)}</div>
+        </div>
+        <div class="col s12">
+          <p style="margin-bottom:0px; margin-top:8px;">Contact: ${replaceURLs(item.contact)}</p>
         </div>
       </div>
       `);
@@ -163,19 +172,19 @@ let EditPlacePopup = Popup.extend({
     this.type = "edit"
     this.item = item
     setOptions(this, options)
-    this.setLatLng([item.lat,item.lng])
+    this.setLatLng([item.lat, item.lng])
     this.setContent(`
       <form id="placeform">
         <div class="row">
           <div class="col s12">
             <div class="input-field">
-              <input id="id_title" name="title" type="text" class="" value="${item.title||""}">
+              <input id="id_title" name="title" type="text" class="" value="${item.title||""}"required>
               <label for="id_title">Title</label>
             </div>
           </div>
           <div class="col s12">
             <div class="input-field" style="margin:0">
-              <textarea id="id_text" name="text" class="materialize-textarea">${item.text||""}</textarea>
+              <textarea id="id_text" name="text" class="materialize-textarea"required>${item.text||""}</textarea>
               <label for="id_text">#Hash, URL, Contact, Text, ...</label>
             </div>
           </div>
@@ -203,26 +212,28 @@ let EditHomePopup = Popup.extend({
     this.type = "edit"
     this.item = item
     setOptions(this, options)
-    this.setLatLng([item.lat,item.lng])
+    this.setLatLng([item.lat, item.lng])
     this.setContent(`
       <form id="homeform">
         <div class="row">
           <div class="col s12">
             <div class="input-field">
-              <input id="id_title" name="title" type="text" class="" value="${item.title||""}">
+              <input id="id_title" name="title" type="text" class="" value="${item.title||""}"required>
               <label for="id_title">Title</label>
             </div>
           </div>
           <div class="col s12">
             <div class="input-field" style="margin:0">
-              <textarea id="id_text" name="text" class="materialize-textarea">${item.text||""}</textarea>
-              <label for="id_text">#Hash, URL, Contact, Text, ...</label>
+              <textarea id="id_text" name="text" class="materialize-textarea"required>${item.text||""}</textarea>
+              <label for="id_text">#Hash, Text, ...</label>
             </div>
           </div>
-            <ul id="id_tags" class="reset-checkbox">
-              <div class="col s6">
-              </div>
-            </ul>
+          <div class="col s12">
+            <div class="input-field">
+              <input id="id_contact" name="contact" type="text" class="" value="${item.contact||""}"required>
+              <label for="id_contact">Contact</label>
+            </div>
+          </div>
           <div class="col s12">
             <input type="number" id="lng" name="lng" style="display: none;" step="any" value="${item.lng}">
             <input type="number" id="lat" name="lat" style="display: none;" step="any" value="${item.lat}">
@@ -243,26 +254,28 @@ let EditOfferPopup = Popup.extend({
     this.type = "edit"
     this.item = item
     setOptions(this, options)
-    this.setLatLng([item.lat,item.lng])
+    this.setLatLng([item.lat, item.lng])
     this.setContent(`
       <form id="offerform">
         <div class="row">
           <div class="col s12">
             <div class="input-field">
-              <input id="id_title" name="title" type="text" class="" value="${item.title||""}">
+              <input id="id_title" name="title" type="text" class="" value="${item.title||""}"required>
               <label for="id_title">Title</label>
             </div>
           </div>
           <div class="col s12">
             <div class="input-field" style="margin:0">
-              <textarea id="id_text" name="text" class="materialize-textarea">${item.text||""}</textarea>
-              <label for="id_text">#Hash, URL, Contact, Text, ...</label>
+              <textarea id="id_text" name="text" class="materialize-textarea"required>${item.text||""}</textarea>
+              <label for="id_text">#Hash, Text, ...</label>
             </div>
           </div>
-            <ul id="id_tags" class="reset-checkbox">
-              <div class="col s6">
-              </div>
-            </ul>
+          <div class="col s12">
+            <div class="input-field">
+              <input id="id_contact" name="contact" type="text" class="" value="${item.contact||""}"required>
+              <label for="id_contact">Contact</label>
+            </div>
+          </div>
           <div class="col s12">
             <input type="number" id="lng" name="lng" style="display: none;" step="any" value="${item.lng}">
             <input type="number" id="lat" name="lat" style="display: none;" step="any" value="${item.lat}">
@@ -283,26 +296,28 @@ let EditNeedPopup = Popup.extend({
     this.type = "edit"
     this.item = item
     setOptions(this, options)
-    this.setLatLng([item.lat,item.lng])
+    this.setLatLng([item.lat, item.lng])
     this.setContent(`
       <form id="needform">
         <div class="row">
           <div class="col s12">
             <div class="input-field">
-              <input id="id_title" name="title" type="text" class="" value="${item.title||""}">
+              <input id="id_title" name="title" type="text" class="" value="${item.title||""}"required>
               <label for="id_title">Title</label>
             </div>
           </div>
           <div class="col s12">
             <div class="input-field" style="margin:0">
-              <textarea id="id_text" name="text" class="materialize-textarea">${item.text||""}</textarea>
-              <label for="id_text">#Hash, URL, Contact, Text, ...</label>
+              <textarea id="id_text" name="text" class="materialize-textarea"required>${item.text||""}</textarea>
+              <label for="id_text">#Hash, Text, ...</label>
             </div>
           </div>
-            <ul id="id_tags" class="reset-checkbox">
-              <div class="col s6">
-              </div>
-            </ul>
+          <div class="col s12">
+            <div class="input-field">
+              <input id="id_contact" name="contact" type="text" class="" value="${item.contact||""}"required>
+              <label for="id_contact">Contact</label>
+            </div>
+          </div>
           <div class="col s12">
             <input type="number" id="lng" name="lng" style="display: none;" step="any" value="${item.lng}">
             <input type="number" id="lat" name="lat" style="display: none;" step="any" value="${item.lat}">
@@ -323,7 +338,7 @@ let EditEventPopup = Popup.extend({
     this.type = "edit"
     this.item = item
     setOptions(this, options)
-    this.setLatLng([item.lat,item.lng])
+    this.setLatLng([item.lat, item.lng])
     this.setContent(`
       <form id="eventform">
         <div class="row">
@@ -371,16 +386,20 @@ let EditEventPopup = Popup.extend({
   },
   initDatepicker: function() {
     var elems = document.querySelectorAll(".datepicker");
-    var instances = M.Datepicker.init(elems, {container: "body", autoClose: true, format: 'yyyy-mm-dd'});
+    var instances = M.Datepicker.init(elems, {
+      container: "body",
+      autoClose: true,
+      format: 'yyyy-mm-dd'
+    });
   }
 })
 
 function replaceURLs(message) {
-  if(!message) return;
+  if (!message) return;
 
   var urlRegex = /(^| )(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,10}(:[0-9]{1,10})?(\/.*)?$/gm;
-  message = message.replace(urlRegex, function (url) {
-    var hyperlink = url.replace(' ','');
+  message = message.replace(urlRegex, function(url) {
+    var hyperlink = url.replace(' ', '');
     if (!hyperlink.match('^https?:\/\/')) {
       hyperlink = 'http://' + hyperlink;
     }
@@ -388,7 +407,7 @@ function replaceURLs(message) {
   });
 
   var mailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi;
-  message = message.replace(mailRegex, function (mail) {
+  message = message.replace(mailRegex, function(mail) {
     return '<a href="mailto:' + mail + '">' + mail + '</a>'
   });
 
